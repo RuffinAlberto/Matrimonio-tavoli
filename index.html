@@ -5,384 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#8f9a89">
 <title>Sabrina & Alberto · Trova il tuo tavolo</title>
-
 <style>
-:root{
-  --sage:#8f9a89;
-  --sage-dark:#778474;
-  --sage-pale:#e9ede7;
-  --petrol:#214f59;
-  --gold:#b57a22;
-  --paper:#fffdf8;
-  --line:#cfd7cd;
+:root {
+  --sage:#8f9a89; --sage-dark:#778474; --sage-pale:#e9ede7;
+  --petrol:#214f59; --gold:#b57a22; --paper:#fffdf8;
   --shadow:0 12px 35px rgba(40,55,45,.13);
   --script:"Mistrully","Segoe Script","Snell Roundhand","Brush Script MT",cursive;
   --serif:Georgia,"Times New Roman",serif;
 }
-
 *{box-sizing:border-box}
 html{background:#edf0eb}
-body{
-  margin:0;
-  min-height:100vh;
-  color:var(--petrol);
-  background:#edf0eb;
-  font-family:var(--serif);
-}
+body{margin:0;min-height:100vh;color:var(--petrol);background:#edf0eb;font-family:var(--serif)}
 button,input{font:inherit}
-button{-webkit-tap-highlight-color:transparent}
-
-.shell{
-  width:min(900px,100%);
-  min-height:100vh;
-  margin:0 auto;
-  background:var(--paper);
-  position:relative;
-  overflow:hidden;
-  box-shadow:0 0 55px rgba(45,55,47,.12);
-}
-
-.side-label{
-  position:absolute;
-  z-index:8;
-  inset:0 auto 0 0;
-  width:96px;
-  background:var(--sage);
-  display:flex;
-  justify-content:center;
-  padding-top:55px;
-}
-.side-label span{
-  color:#fff;
-  font-family:var(--script);
-  font-size:46px;
-  font-weight:400;
-  line-height:1;
-  writing-mode:vertical-rl;
-  transform:rotate(180deg);
-}
-
-.page{
-  min-height:100vh;
-  padding:54px 70px 54px 160px;
-  position:relative;
-  z-index:2;
-  text-align:center;
-}
-
-.couple{
-  margin:0;
-  color:var(--petrol);
-  font-size:19px;
-  letter-spacing:7px;
-  text-transform:uppercase;
-  font-weight:500;
-}
-.date{
-  margin:15px 0 0;
-  font-size:14px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  color:var(--petrol);
-}
-.ornament{
-  width:145px;
-  height:28px;
-  margin:18px auto 28px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:11px;
-}
-.ornament:before,.ornament:after{
-  content:"";
-  height:1px;
-  flex:1;
-  background:rgba(181,122,34,.7);
-}
-.ornament i{
-  display:block;
-  width:10px;height:18px;
-  border-radius:100% 0 100% 0;
-  background:#d7a140;
-  transform:rotate(35deg);
-  position:relative;
-}
-.ornament i:after{
-  content:"";
-  position:absolute;
-  width:10px;height:18px;
-  left:8px;top:5px;
-  border-radius:0 100% 0 100%;
-  background:#d7a140;
-  transform:rotate(-12deg);
-}
-
-.pre-title{
-  margin:0 0 2px;
-  font-size:19px;
-  letter-spacing:.5px;
-  color:var(--petrol);
-}
-.title{
-  margin:0;
-  color:var(--gold);
-  font-family:var(--script);
-  font-size:68px;
-  line-height:1.08;
-  font-weight:400;
-}
-
-.small-botanical{
-  width:180px;
-  margin:18px auto 30px;
-  color:var(--sage);
-  opacity:.78;
-}
-.small-botanical svg{width:100%;height:auto;display:block}
-
-.search-wrap{
-  width:min(560px,100%);
-  margin:0 auto;
-  position:relative;
-  z-index:10;
-  text-align:left;
-}
-.search-row{
-  display:grid;
-  grid-template-columns:1fr 76px;
-  background:#fff;
-  border:2px solid var(--sage-dark);
-  border-radius:22px;
-  overflow:hidden;
-  box-shadow:0 7px 20px rgba(65,80,67,.06);
-}
-#guestInput{
-  width:100%;
-  height:66px;
-  border:0;
-  outline:0;
-  padding:0 22px;
-  background:transparent;
-  color:var(--petrol);
-  font-size:20px;
-}
+.shell{width:min(900px,100%);min-height:100vh;margin:0 auto;background:var(--paper);position:relative;overflow:hidden;box-shadow:0 0 55px rgba(45,55,47,.12)}
+.side-label{position:absolute;z-index:8;inset:0 auto 0 0;width:96px;background:var(--sage);display:flex;justify-content:center;padding-top:55px}
+.side-label span{color:#fff;font-family:var(--script);font-size:46px;writing-mode:vertical-rl;transform:rotate(180deg)}
+.page{min-height:100vh;padding:54px 70px 54px 160px;position:relative;z-index:2;text-align:center}
+.couple{margin:0;color:var(--petrol);font-size:24px;letter-spacing:7px;text-transform:uppercase;font-weight:500}
+.date{margin:16px 0 0;font-size:16px;letter-spacing:5px;text-transform:uppercase;color:var(--petrol)}
+.ornament{width:145px;height:28px;margin:18px auto 28px;display:flex;align-items:center;justify-content:center;gap:11px}
+.ornament:before,.ornament:after{content:"";height:1px;flex:1;background:rgba(181,122,34,.7)}
+.ornament i{display:block;width:10px;height:18px;border-radius:100% 0 100% 0;background:#d7a140;transform:rotate(35deg);position:relative}
+.ornament i:after{content:"";position:absolute;width:10px;height:18px;left:8px;top:5px;border-radius:0 100% 0 100%;background:#d7a140;transform:rotate(-12deg)}
+.pre-title{margin:0 0 4px;font-size:23px;letter-spacing:.5px;color:var(--petrol)}
+.title{margin:0;color:var(--gold);font-family:var(--script);font-size:68px;line-height:1.08;font-weight:400}
+.small-botanical{width:180px;margin:18px auto 30px;color:var(--sage);opacity:.78}
+.small-botanical svg{width:100%;display:block}
+.search-wrap{width:min(560px,100%);margin:0 auto;position:relative;z-index:10;text-align:left}
+.search-row{display:grid;grid-template-columns:1fr 76px;background:#fff;border:2px solid var(--sage-dark);border-radius:22px;overflow:hidden;box-shadow:0 7px 20px rgba(65,80,67,.06)}
+#guestInput{width:100%;height:66px;border:0;outline:0;padding:0 22px;background:transparent;color:var(--petrol);font-size:20px}
 #guestInput::placeholder{color:#989997}
-#searchBtn{
-  border:0;
-  background:var(--sage);
-  color:#fff;
-  cursor:pointer;
-  font-size:27px;
-  display:grid;
-  place-items:center;
-}
+#searchBtn{border:0;background:var(--sage);color:#fff;cursor:pointer;font-size:27px;display:grid;place-items:center}
 #searchBtn:hover{background:var(--sage-dark)}
-
-.suggestions{
-  display:none;
-  position:absolute;
-  z-index:30;
-  top:74px;
-  left:0;
-  right:0;
-  max-height:315px;
-  overflow-y:auto;
-  background:#fff;
-  border:1px solid #d7ddd4;
-  border-radius:17px;
-  box-shadow:var(--shadow);
-  padding:8px;
-}
+.suggestions{display:none;position:absolute;z-index:30;top:74px;left:0;right:0;max-height:315px;overflow-y:auto;background:#fff;border:1px solid #d7ddd4;border-radius:17px;box-shadow:var(--shadow);padding:8px}
 .suggestions.show{display:block}
-.suggestion{
-  width:100%;
-  border:0;
-  background:#fff;
-  color:var(--petrol);
-  text-align:left;
-  padding:13px 14px;
-  border-radius:11px;
-  font-size:18px;
-  cursor:pointer;
-}
-.suggestion:hover,.suggestion.active{
-  background:var(--sage-pale);
-}
-.suggestion .match-detail{
-  float:right;
-  font-size:12px;
-  color:#889185;
-  letter-spacing:.5px;
-  margin-top:4px;
-}
-.autocomplete-hint{
-  margin:10px 0 0;
-  text-align:center;
-  font-size:12px;
-  color:#818981;
-  font-style:italic;
-}
-
-.result{
-  display:none;
-  width:min(560px,100%);
-  margin:34px auto 0;
-  position:relative;
-  z-index:5;
-}
+.suggestion{width:100%;border:0;background:#fff;color:var(--petrol);text-align:left;padding:13px 14px;border-radius:11px;font-size:18px;cursor:pointer}
+.suggestion:hover,.suggestion.active{background:var(--sage-pale)}
+.result{display:none;width:min(560px,100%);margin:34px auto 0;position:relative;z-index:5}
 .result.show{display:block;animation:resultIn .22s ease-out}
-@keyframes resultIn{
-  from{opacity:0;transform:translateY(5px)}
-  to{opacity:1;transform:none}
-}
-.result-card{
-  background:rgba(255,253,248,.93);
-  border:2px solid var(--sage-dark);
-  border-radius:24px;
-  padding:26px 24px 29px;
-}
-.result-label{
-  color:var(--gold);
-  font-family:var(--script);
-  font-size:39px;
-  line-height:1.1;
-}
-.table-name{
-  margin:12px 0 8px;
-  color:var(--petrol);
-  font-size:48px;
-  line-height:1.05;
-  letter-spacing:5px;
-  text-transform:uppercase;
-}
-.guest-name{
-  color:#6f7f79;
-  font-size:14px;
-  letter-spacing:1px;
-}
-.result-message{
-  margin-top:14px;
-  color:var(--petrol);
-  font-size:18px;
-}
-.not-found{
-  background:#fff;
-  border:1px solid #d7ddd4;
-  border-radius:18px;
-  padding:20px;
-  text-align:center;
-  color:#6d756e;
-  line-height:1.45;
-}
-.multi{
-  display:grid;
-  gap:9px;
-}
-.multi button{
-  border:1px solid #d5dcd2;
-  border-radius:14px;
-  padding:13px 15px;
-  background:#fff;
-  color:var(--petrol);
-  text-align:left;
-  cursor:pointer;
-}
-.multi button:hover{background:var(--sage-pale)}
-
-.good-party{
-  margin:32px 0 0;
-  color:var(--gold);
-  font-family:var(--script);
-  font-size:52px;
-  line-height:1;
-}
-
-.botanical{
-  position:absolute;
-  z-index:1;
-  pointer-events:none;
-  right:-78px;
-  bottom:-55px;
-  width:330px;
-  opacity:.36;
-}
-.botanical svg{width:100%;height:auto;display:block}
-
-/* Smartphone / apertura tramite QR */
+@keyframes resultIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.result-card{background:rgba(255,253,248,.93);border:2px solid var(--sage-dark);border-radius:24px;padding:26px 24px 29px}
+.result-label{color:var(--gold);font-family:var(--script);font-size:39px;line-height:1.1}
+.table-name{margin:12px 0 8px;color:var(--petrol);font-size:48px;line-height:1.05;letter-spacing:5px;text-transform:uppercase}
+.result-message{margin-top:14px;color:var(--petrol);font-size:18px}
+.not-found{background:#fff;border:1px solid #d7ddd4;border-radius:18px;padding:20px;text-align:center;color:#6d756e;line-height:1.45}
+.multi{display:grid;gap:9px}
+.multi button{border:1px solid #d5dcd2;border-radius:14px;padding:13px 15px;background:#fff;color:var(--petrol);text-align:left;cursor:pointer}
+.good-party{margin:32px 0 0;color:var(--gold);font-family:var(--script);font-size:52px;line-height:1}
+.botanical{position:absolute;z-index:1;pointer-events:none;right:-78px;bottom:-55px;width:330px;opacity:.36}
+.botanical svg{width:100%;display:block}
 @media (max-width:700px){
-  body{background:var(--paper)}
-  .shell{width:100%;box-shadow:none}
-  .side-label{
-    position:relative;
-    width:100%;
-    height:62px;
-    padding:0;
-    align-items:center;
-  }
-  .side-label span{
-    writing-mode:horizontal-tb;
-    transform:none;
-    font-size:38px;
-  }
-  .page{
-    min-height:calc(100vh - 62px);
-    padding:31px 20px 42px;
-  }
-  .couple{
-    font-size:14px;
-    letter-spacing:5px;
-  }
-  .date{
-    margin-top:11px;
-    font-size:11px;
-    letter-spacing:4px;
-  }
+  body{background:var(--paper)} .shell{width:100%;box-shadow:none}
+  .side-label{position:relative;width:100%;height:62px;padding:0;align-items:center}
+  .side-label span{writing-mode:horizontal-tb;transform:none;font-size:38px}
+  .page{min-height:calc(100vh - 62px);padding:31px 20px 42px}
+  .couple{font-size:17px;letter-spacing:5px}
+  .date{margin-top:12px;font-size:13px;letter-spacing:4px}
   .ornament{margin:15px auto 21px;width:110px}
-  .pre-title{font-size:17px}
-  .title{font-size:50px}
+  .pre-title{font-size:20px} .title{font-size:50px}
   .small-botanical{width:145px;margin:11px auto 23px}
-  .search-row{
-    grid-template-columns:1fr 64px;
-    border-radius:17px;
-  }
-  #guestInput{
-    height:59px;
-    font-size:18px;
-    padding:0 16px;
-  }
-  #searchBtn{font-size:24px}
-  .suggestions{
-    top:67px;
-    max-height:270px;
-  }
-  .suggestion{font-size:17px;padding:12px}
-  .result{margin-top:28px}
+  .search-row{grid-template-columns:1fr 64px;border-radius:17px}
+  #guestInput{height:59px;font-size:18px;padding:0 16px}
+  #searchBtn{font-size:24px} .suggestions{top:67px;max-height:270px}
+  .suggestion{font-size:17px;padding:12px} .result{margin-top:28px}
   .result-card{border-radius:20px;padding:23px 17px 25px}
-  .result-label{font-size:34px}
-  .table-name{font-size:37px;letter-spacing:3px}
+  .result-label{font-size:34px} .table-name{font-size:37px;letter-spacing:3px}
   .good-party{font-size:45px;margin-top:27px}
-  .botanical{
-    width:245px;
-    right:-98px;
-    bottom:-30px;
-    opacity:.24;
-  }
+  .botanical{width:245px;right:-98px;bottom:-30px;opacity:.24}
 }
-
 @media (max-width:380px){
-  .page{padding-left:15px;padding-right:15px}
-  .title{font-size:44px}
-  .couple{font-size:12px;letter-spacing:4px}
+  .page{padding-left:15px;padding-right:15px} .title{font-size:44px}
+  .couple{font-size:15px;letter-spacing:4px} .date{font-size:12px}
   .table-name{font-size:32px}
 }
 </style>
 </head>
-
 <body>
 <div class="shell">
   <aside class="side-label"><span>tavoli</span></aside>
-
   <div class="botanical" aria-hidden="true">
     <svg viewBox="0 0 350 620" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" stroke="#869586" stroke-width="3">
@@ -409,15 +109,12 @@ button{-webkit-tap-highlight-color:transparent}
       </g>
     </svg>
   </div>
-
   <main class="page">
     <p class="couple">SABRINA &amp; ALBERTO</p>
     <p class="date">12 SETTEMBRE 2026</p>
     <div class="ornament"><i></i></div>
-
     <p class="pre-title">Inserisci il tuo nome e</p>
     <h1 class="title">Trova il tuo tavolo</h1>
-
     <div class="small-botanical" aria-hidden="true">
       <svg viewBox="0 0 210 56" xmlns="http://www.w3.org/2000/svg">
         <g fill="none" stroke="currentColor" stroke-width="1.5" opacity=".7">
@@ -432,220 +129,85 @@ button{-webkit-tap-highlight-color:transparent}
           <ellipse cx="141" cy="31" rx="13" ry="6" transform="rotate(20 141 31)"/>
           <ellipse cx="123" cy="23" rx="12" ry="5" transform="rotate(-28 123 23)"/>
         </g>
-        <path d="M105 44 C90 33 90 18 100 18 C105 18 108 22 110 27 C112 22 115 18 120 18 C130 18 130 33 105 44Z"
-              fill="none" stroke="#b57a22" stroke-width="1.8"/>
+        <path d="M105 44 C90 33 90 18 100 18 C105 18 108 22 110 27 C112 22 115 18 120 18 C130 18 130 33 105 44Z" fill="none" stroke="#b57a22" stroke-width="1.8"/>
       </svg>
     </div>
-
     <section class="search-wrap">
       <div class="search-row">
-        <input id="guestInput"
-               type="text"
-               inputmode="text"
-               autocomplete="off"
-               autocapitalize="words"
-               placeholder="Digita qui il tuo nome…"
-               aria-label="Nome dell'invitato"
-               aria-autocomplete="list"
-               aria-controls="suggestions">
+        <input id="guestInput" type="text" inputmode="text" autocomplete="off" autocapitalize="words" placeholder="Digita qui il tuo nome…" aria-label="Nome dell'invitato" aria-autocomplete="list" aria-controls="suggestions">
         <button id="searchBtn" type="button" aria-label="Cerca">⌕</button>
       </div>
       <div id="suggestions" class="suggestions" role="listbox"></div>
-      <p class="autocomplete-hint">I nomi compariranno automaticamente mentre scrivi.</p>
     </section>
-
     <section id="result" class="result" aria-live="polite"></section>
   </main>
 </div>
-
 <script>
 const guests = [{"name": "RICCARDO BARI", "table": "CUSTOZA"}, {"name": "KATIA", "table": "CUSTOZA"}, {"name": "SILVIA", "table": "CUSTOZA"}, {"name": "CHARLIE", "table": "CUSTOZA"}, {"name": "CARLO", "table": "CUSTOZA"}, {"name": "ALBERTO", "table": "CUSTOZA"}, {"name": "SABRINA", "table": "CUSTOZA"}, {"name": "EMANUELE", "table": "LUGANA"}, {"name": "ROSA", "table": "LUGANA"}, {"name": "LEONARDO", "table": "LUGANA"}, {"name": "CLAUDIA", "table": "LUGANA"}, {"name": "MARY", "table": "LUGANA"}, {"name": "MORRIS", "table": "LUGANA"}, {"name": "ELEONORA", "table": "LUGANA"}, {"name": "STEFANO DE MARCH", "table": "LUGANA"}, {"name": "GIULIA", "table": "PASSERINA"}, {"name": "ENRICO", "table": "PASSERINA"}, {"name": "GIOVANNA", "table": "PASSERINA"}, {"name": "MARCO", "table": "PASSERINA"}, {"name": "ELISA FRIZZARIN", "table": "PASSERINA"}, {"name": "MANUEL", "table": "PASSERINA"}, {"name": "ANNA", "table": "PASSERINA"}, {"name": "SIMONE DOMENICHINI", "table": "PASSERINA"}, {"name": "EMMA", "table": "PASSERINA"}, {"name": "RICCARDO (EMMA)", "table": "PASSERINA"}, {"name": "LUCIA", "table": "PROSECCO"}, {"name": "TIZIANO", "table": "PROSECCO"}, {"name": "ANNAMARIA", "table": "PROSECCO"}, {"name": "SIMONE", "table": "PROSECCO"}, {"name": "PAOLA", "table": "PROSECCO"}, {"name": "MATTIA", "table": "PROSECCO"}, {"name": "GIOVANNI", "table": "PROSECCO"}, {"name": "ELISA MARANA", "table": "PROSECCO"}, {"name": "MIRKO", "table": "PROSECCO"}, {"name": "LAURA", "table": "RECIOTO"}, {"name": "ANDREA BUSON", "table": "RECIOTO"}, {"name": "FILIPPO", "table": "RECIOTO"}, {"name": "GIACOMO OSELLADORE", "table": "RECIOTO"}, {"name": "FIAMMETTA", "table": "RECIOTO"}, {"name": "MARGHERITA", "table": "RECIOTO"}, {"name": "FRANCESCO BALDISSAROTTO", "table": "RECIOTO"}, {"name": "BIANCA", "table": "RECIOTO"}, {"name": "LUCA", "table": "RECIOTO"}, {"name": "FRANCESCO RUFFIN", "table": "RECIOTO"}, {"name": "MARTA RUFFIN", "table": "AMARONE"}, {"name": "SILVANA", "table": "AMARONE"}, {"name": "WILMA", "table": "AMARONE"}, {"name": "GIANNI OSELLADORE", "table": "AMARONE"}, {"name": "SANDRO", "table": "AMARONE"}, {"name": "GIANNI RUFFIN", "table": "AMARONE"}, {"name": "ALESSANDRA", "table": "AMARONE"}, {"name": "MARTA DE VIDO", "table": "AMARONE"}, {"name": "GIANANDREA", "table": "AMARONE"}, {"name": "MARINA", "table": "AMARONE"}, {"name": "ANTONIETTA", "table": "DURELLO"}, {"name": "VITTORINO", "table": "DURELLO"}, {"name": "GIULIANO", "table": "DURELLO"}, {"name": "GIACOMO PINAMONTI", "table": "DURELLO"}, {"name": "RICCARDO PINAMONTI", "table": "DURELLO"}, {"name": "STEFANO (RICCARDO)", "table": "DURELLO"}, {"name": "DENIS", "table": "DURELLO"}, {"name": "VERONICA", "table": "DURELLO"}, {"name": "DAVIDE", "table": "DURELLO"}, {"name": "ANGELICA", "table": "DURELLO"}, {"name": "MARIANGELA", "table": "RIPASSO"}, {"name": "GIANNI NEGRETTO", "table": "RIPASSO"}, {"name": "LUCIANO", "table": "RIPASSO"}, {"name": "FRANCESCA", "table": "RIPASSO"}, {"name": "ADRIANA", "table": "RIPASSO"}, {"name": "NICOLA", "table": "RIPASSO"}, {"name": "LARA", "table": "RIPASSO"}, {"name": "ANDREA NEGRETTO", "table": "RIPASSO"}, {"name": "MARTINA", "table": "RIPASSO"}, {"name": "IVAN", "table": "RIPASSO"}, {"name": "CARLOTTA", "table": "BOSS MARAI"}, {"name": "STEFANO (CARLOTTA)", "table": "BOSS MARAI"}, {"name": "GIUSEPPE", "table": "BOSS MARAI"}, {"name": "GIANNA", "table": "BOSS MARAI"}, {"name": "MATTEO", "table": "BOSS MARAI"}, {"name": "CATERINA", "table": "BOSS MARAI"}, {"name": "ANTONIO", "table": "BOSS MARAI"}, {"name": "CHIARA", "table": "BOSS MARAI"}];
-
 function normalizeText(value){
-  return String(value)
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"")
-    .toUpperCase()
-    .replace(/[^A-Z0-9() ]/g," ")
-    .replace(/\s+/g," ")
-    .trim();
+  return String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().replace(/[^A-Z0-9() ]/g," ").replace(/\s+/g," ").trim();
 }
-
 function escapeHtml(value){
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
-  }[c]));
+  return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
 }
-
-const indexed = guests.map((g,index)=>({
-  ...g,
-  index,
-  normalized: normalizeText(g.name)
-}));
-
-const input = document.getElementById("guestInput");
-const suggestionBox = document.getElementById("suggestions");
-const resultBox = document.getElementById("result");
-let currentSuggestions = [];
-let activeSuggestion = -1;
-
+const indexed=guests.map((g,index)=>({...g,index,normalized:normalizeText(g.name)}));
+const input=document.getElementById("guestInput");
+const suggestionBox=document.getElementById("suggestions");
+const resultBox=document.getElementById("result");
+let currentSuggestions=[]; let activeSuggestion=-1;
 function findMatches(query){
-  const q = normalizeText(query);
-  if(!q) return [];
-
-  const starts = indexed.filter(g => g.normalized.startsWith(q));
-  const contains = indexed.filter(g => !g.normalized.startsWith(q) && g.normalized.includes(q));
-  return [...starts, ...contains].slice(0,8);
+  const q=normalizeText(query); if(!q)return [];
+  const starts=indexed.filter(g=>g.normalized.startsWith(q));
+  const contains=indexed.filter(g=>!g.normalized.startsWith(q)&&g.normalized.includes(q));
+  return [...starts,...contains].slice(0,8);
 }
-
 function renderSuggestions(){
-  const q = input.value.trim();
-  currentSuggestions = findMatches(q);
-  activeSuggestion = -1;
-
-  if(!q || !currentSuggestions.length){
-    suggestionBox.classList.remove("show");
-    suggestionBox.innerHTML = "";
-    return;
-  }
-
-  suggestionBox.innerHTML = currentSuggestions.map((g,i)=>`
-    <button class="suggestion" type="button" role="option"
-            data-index="${g.index}" data-pos="${i}">
-      ${escapeHtml(g.name)}
-    </button>
-  `).join("");
-
+  const q=input.value.trim(); currentSuggestions=findMatches(q); activeSuggestion=-1;
+  if(!q||!currentSuggestions.length){suggestionBox.classList.remove("show");suggestionBox.innerHTML="";return;}
+  suggestionBox.innerHTML=currentSuggestions.map((g,i)=>`<button class="suggestion" type="button" role="option" data-index="${g.index}" data-pos="${i}">${escapeHtml(g.name)}</button>`).join("");
   suggestionBox.classList.add("show");
-
-  suggestionBox.querySelectorAll(".suggestion").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const g = indexed.find(x => x.index === Number(btn.dataset.index));
-      input.value = g.name;
-      hideSuggestions();
-      showGuest(g);
-    });
-  });
+  suggestionBox.querySelectorAll(".suggestion").forEach(btn=>btn.addEventListener("click",()=>{
+    const g=indexed.find(x=>x.index===Number(btn.dataset.index)); input.value=g.name; hideSuggestions(); showGuest(g);
+  }));
 }
-
-function hideSuggestions(){
-  suggestionBox.classList.remove("show");
-  activeSuggestion = -1;
-}
-
+function hideSuggestions(){suggestionBox.classList.remove("show");activeSuggestion=-1;}
 function setActiveSuggestion(next){
-  const items = [...suggestionBox.querySelectorAll(".suggestion")];
-  if(!items.length) return;
-
-  activeSuggestion = (next + items.length) % items.length;
-  items.forEach((el,i)=>el.classList.toggle("active", i===activeSuggestion));
+  const items=[...suggestionBox.querySelectorAll(".suggestion")]; if(!items.length)return;
+  activeSuggestion=(next+items.length)%items.length;
+  items.forEach((el,i)=>el.classList.toggle("active",i===activeSuggestion));
   items[activeSuggestion].scrollIntoView({block:"nearest"});
 }
-
 function showGuest(g){
-  resultBox.innerHTML = `
-    <div class="result-card">
-      <div class="result-label">il tuo tavolo è</div>
-      <div class="table-name">${escapeHtml(g.table)}</div>
-      <div class="guest-name">${escapeHtml(g.name)}</div>
-      <div class="result-message">Ti aspettiamo a tavola!</div>
-    </div>
-    <div class="good-party">Buona festa!</div>
-  `;
-  resultBox.classList.add("show");
-  resultBox.scrollIntoView({behavior:"smooth",block:"nearest"});
+  resultBox.innerHTML=`<div class="result-card"><div class="result-label">il tuo tavolo è</div><div class="table-name">${escapeHtml(g.table)}</div><div class="result-message">Ti aspettiamo a tavola!</div></div><div class="good-party">Buona festa!</div>`;
+  resultBox.classList.add("show"); resultBox.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
-
 function submitSearch(){
-  const q = normalizeText(input.value);
-  if(!q) return;
-
-  const exact = indexed.filter(g => g.normalized === q);
-  if(exact.length === 1){
+  const q=normalizeText(input.value); if(!q)return;
+  const exact=indexed.filter(g=>g.normalized===q);
+  if(exact.length===1){hideSuggestions();showGuest(exact[0]);return;}
+  if(exact.length>1){
     hideSuggestions();
-    showGuest(exact[0]);
-    return;
-  }
-  if(exact.length > 1){
-    hideSuggestions();
-    resultBox.innerHTML = `
-      <div class="not-found">
-        Ci sono più invitati con questo nome. Seleziona quello corretto:
-        <div class="multi" style="margin-top:14px">
-          ${exact.map(g=>`
-            <button type="button" data-index="${g.index}">
-              <strong>${escapeHtml(g.name)}</strong><br>
-              <small>Tavolo ${escapeHtml(g.table)}</small>
-            </button>
-          `).join("")}
-        </div>
-      </div>
-    `;
+    resultBox.innerHTML=`<div class="not-found">Ci sono più invitati con questo nome. Seleziona quello corretto:<div class="multi" style="margin-top:14px">${exact.map(g=>`<button type="button" data-index="${g.index}"><strong>${escapeHtml(g.name)}</strong><br><small>Tavolo ${escapeHtml(g.table)}</small></button>`).join("")}</div></div>`;
     resultBox.classList.add("show");
-    resultBox.querySelectorAll(".multi button").forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        const g=indexed.find(x=>x.index===Number(btn.dataset.index));
-        showGuest(g);
-      });
-    });
+    resultBox.querySelectorAll(".multi button").forEach(btn=>btn.addEventListener("click",()=>{const g=indexed.find(x=>x.index===Number(btn.dataset.index));showGuest(g);}));
     return;
   }
-
-  const matches = findMatches(input.value);
-  if(matches.length === 1){
-    input.value = matches[0].name;
-    hideSuggestions();
-    showGuest(matches[0]);
-    return;
-  }
-
-  if(matches.length > 1){
-    renderSuggestions();
-    return;
-  }
-
+  const matches=findMatches(input.value);
+  if(matches.length===1){input.value=matches[0].name;hideSuggestions();showGuest(matches[0]);return;}
+  if(matches.length>1){renderSuggestions();return;}
   hideSuggestions();
-  resultBox.innerHTML = `
-    <div class="not-found">
-      Non trovo questo nome nell'elenco.<br>
-      Controlla la scrittura oppure chiedi agli sposi.
-    </div>
-  `;
+  resultBox.innerHTML=`<div class="not-found">Non trovo questo nome nell'elenco.<br>Controlla la scrittura oppure chiedi agli sposi.</div>`;
   resultBox.classList.add("show");
 }
-
-input.addEventListener("input",()=>{
-  resultBox.classList.remove("show");
-  renderSuggestions();
-});
-
+input.addEventListener("input",()=>{resultBox.classList.remove("show");renderSuggestions();});
 input.addEventListener("keydown",e=>{
-  if(e.key==="ArrowDown"){
-    e.preventDefault();
-    if(suggestionBox.classList.contains("show")) setActiveSuggestion(activeSuggestion+1);
-  } else if(e.key==="ArrowUp"){
-    e.preventDefault();
-    if(suggestionBox.classList.contains("show")) setActiveSuggestion(activeSuggestion-1);
-  } else if(e.key==="Enter"){
-    e.preventDefault();
-    if(activeSuggestion>=0 && currentSuggestions[activeSuggestion]){
-      const g=currentSuggestions[activeSuggestion];
-      input.value=g.name;
-      hideSuggestions();
-      showGuest(g);
-    } else {
-      submitSearch();
-    }
-  } else if(e.key==="Escape"){
-    hideSuggestions();
-  }
+  if(e.key==="ArrowDown"){e.preventDefault();if(suggestionBox.classList.contains("show"))setActiveSuggestion(activeSuggestion+1);}
+  else if(e.key==="ArrowUp"){e.preventDefault();if(suggestionBox.classList.contains("show"))setActiveSuggestion(activeSuggestion-1);}
+  else if(e.key==="Enter"){e.preventDefault();if(activeSuggestion>=0&&currentSuggestions[activeSuggestion]){const g=currentSuggestions[activeSuggestion];input.value=g.name;hideSuggestions();showGuest(g);}else{submitSearch();}}
+  else if(e.key==="Escape"){hideSuggestions();}
 });
-
 document.getElementById("searchBtn").addEventListener("click",submitSearch);
-
-document.addEventListener("click",e=>{
-  if(!e.target.closest(".search-wrap")) hideSuggestions();
-});
+document.addEventListener("click",e=>{if(!e.target.closest(".search-wrap"))hideSuggestions();});
 </script>
 </body>
 </html>
