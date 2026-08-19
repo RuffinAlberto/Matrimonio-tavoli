@@ -78,6 +78,18 @@ button,input{font:inherit}
   .couple{font-size:15px;letter-spacing:4px} .date{font-size:12px}
   .table-name{font-size:32px}
 }
+
+/* === MAPPA TAVOLI: aggiunta senza modificare la grafica originale === */
+.seating-map{width:min(560px,100%);margin:22px auto 0;position:relative;z-index:5}
+.seating-map-title{margin:0 0 10px;color:var(--petrol);font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.seating-map-frame{width:100%;background:rgba(255,253,248,.96);border:1px solid var(--line);border-radius:18px;padding:10px;box-shadow:0 7px 20px rgba(65,80,67,.05)}
+.seating-map svg{width:100%;height:auto;display:block}
+.map-table{fill:#d7ded3;stroke:#9aa895;stroke-width:1.5;transition:fill .25s ease,stroke .25s ease,filter .25s ease}
+.map-table-label{fill:#111;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:18px;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
+.map-table.active{fill:#cf7770;stroke:#b64f49;stroke-width:3;filter:drop-shadow(0 0 8px rgba(182,79,73,.55))}
+.map-divider{stroke:#111;stroke-width:3;stroke-linecap:round}
+@media (max-width:700px){.seating-map{margin-top:20px}.seating-map-frame{padding:6px;border-radius:15px}.map-table-label{font-size:16px}}
+
 </style>
 </head>
 <body>
@@ -178,9 +190,45 @@ function setActiveSuggestion(next){
   items[activeSuggestion].scrollIntoView({block:"nearest"});
 }
 function showGuest(g){
-  resultBox.innerHTML=`<div class="result-card"><div class="result-label">il tuo tavolo è</div><div class="table-name">${escapeHtml(g.table)}</div><div class="result-message">Ti aspettiamo a tavola!</div></div><div class="good-party">Buona festa!</div>`;
+  resultBox.innerHTML=`<div class="result-card"><div class="result-label">il tuo tavolo è</div><div class="table-name">${escapeHtml(g.table)}</div><div class="result-message">Ti aspettiamo a tavola!</div></div>
+<div class="seating-map" aria-label="Piantina dei tavoli">
+  <p class="seating-map-title">Dove trovarlo</p>
+  <div class="seating-map-frame">
+    <svg viewBox="0 0 700 1020" role="img" aria-label="Piantina della sala">
+      <line class="map-divider" x1="350" y1="0" x2="350" y2="145"/>
+      <line class="map-divider" x1="350" y1="260" x2="350" y2="485"/>
+      <line class="map-divider" x1="350" y1="710" x2="350" y2="1020"/>
+      <line class="map-divider" x1="555" y1="405" x2="700" y2="405"/>
+
+      <g data-table="DURELLO"><circle class="map-table" cx="105" cy="92" r="58"/><text class="map-table-label" x="105" y="92">DURELLO</text></g>
+      <g data-table="RIPASSO"><circle class="map-table" cx="250" cy="185" r="58"/><text class="map-table-label" x="250" y="185">RIPASSO</text></g>
+      <g data-table="PROSECCO"><circle class="map-table" cx="95" cy="305" r="58"/><text class="map-table-label" x="95" y="305">PROSECCO</text></g>
+      <g data-table="PASSERINA"><circle class="map-table" cx="252" cy="420" r="58"/><text class="map-table-label" x="252" y="420">PASSERINA</text></g>
+      <g data-table="CUSTOZA"><circle class="map-table" cx="95" cy="550" r="58"/><text class="map-table-label" x="95" y="550">CUSTOZA</text></g>
+      <g data-table="LUGANA"><circle class="map-table" cx="250" cy="690" r="58"/><text class="map-table-label" x="250" y="690">LUGANA</text></g>
+      <g data-table="RECIOTO"><circle class="map-table" cx="95" cy="820" r="58"/><text class="map-table-label" x="95" y="820">RECIOTO</text></g>
+      <g data-table="AMARONE"><circle class="map-table" cx="250" cy="895" r="58"/><text class="map-table-label" x="250" y="895">AMARONE</text></g>
+      <g data-table="BOSS MARAI"><circle class="map-table" cx="95" cy="965" r="58"/><text class="map-table-label" x="95" y="965">BOSS MARAI</text></g>
+
+      <g><circle class="map-table" cx="600" cy="145" r="58"/><text class="map-table-label" x="600" y="145">BAMBINI</text></g>
+      <g><circle class="map-table" cx="500" cy="315" r="58"/><text class="map-table-label" x="500" y="315">BAMBINI</text></g>
+      <g><circle class="map-table" cx="500" cy="690" r="58"/><text class="map-table-label" x="500" y="682">DJ</text><text class="map-table-label" x="500" y="706" style="font-size:14px">FOTOGRAFI</text></g>
+    </svg>
+  </div>
+</div>
+<div class="good-party">Buona festa!</div>`;
+  highlightMapTable(g.table);
   resultBox.classList.add("show"); resultBox.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
+
+function highlightMapTable(tableName){
+  const target=normalizeText(tableName);
+  resultBox.querySelectorAll(".seating-map [data-table]").forEach(group=>{
+    const circle=group.querySelector(".map-table");
+    if(circle) circle.classList.toggle("active",normalizeText(group.dataset.table)===target);
+  });
+}
+
 function submitSearch(){
   const q=normalizeText(input.value); if(!q)return;
   const exact=indexed.filter(g=>g.normalized===q);
