@@ -78,18 +78,6 @@ button,input{font:inherit}
   .couple{font-size:15px;letter-spacing:4px} .date{font-size:12px}
   .table-name{font-size:32px}
 }
-
-/* === MAPPA TAVOLI: aggiunta senza modificare la grafica originale === */
-.seating-map{width:min(560px,100%);margin:22px auto 0;position:relative;z-index:5}
-.seating-map-title{margin:0 0 10px;color:var(--petrol);font-size:14px;letter-spacing:2px;text-transform:uppercase}
-.seating-map-frame{width:100%;background:rgba(255,253,248,.96);border:1px solid var(--line);border-radius:18px;padding:6px;box-shadow:0 7px 20px rgba(65,80,67,.05)}
-.seating-map svg{width:100%;height:auto;display:block}
-.map-table{fill:#d7ded3;stroke:#9aa895;stroke-width:1.5;transition:fill .25s ease,stroke .25s ease,filter .25s ease}
-.map-table-label{fill:#111;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:24px;text-anchor:middle;dominant-baseline:middle;pointer-events:none}
-.map-table.active{fill:#cf7770;stroke:#b64f49;stroke-width:3;filter:drop-shadow(0 0 8px rgba(182,79,73,.55))}
-.map-divider{stroke:#111;stroke-width:3;stroke-linecap:round}
-@media (max-width:700px){.seating-map{margin-top:20px}.seating-map-frame{padding:6px;border-radius:15px}.map-table-label{font-size:16px}}
-
 </style>
 </head>
 <body>
@@ -99,7 +87,7 @@ button,input{font:inherit}
     <svg viewBox="0 0 350 620" xmlns="http://www.w3.org/2000/svg">
       <g fill="none" stroke="#869586" stroke-width="3">
         <path d="M240 620 C236 525 238 432 215 341 C199 277 169 217 151 126"/>
-        <path d="M218 477 C181 445 151 419 110 340"/>
+        <path d="M218 477 C181 445 151 419 110 405"/>
         <path d="M211 357 C246 331 269 297 281 257"/>
         <path d="M185 238 C151 220 128 193 116 159"/>
         <path d="M239 523 C278 489 302 452 309 410"/>
@@ -109,7 +97,7 @@ button,input{font:inherit}
         <ellipse cx="274" cy="470" rx="55" ry="24" transform="rotate(-31 274 470)"/>
         <ellipse cx="135" cy="419" rx="51" ry="22" transform="rotate(28 135 419)"/>
         <ellipse cx="269" cy="330" rx="50" ry="22" transform="rotate(-47 269 330)"/>
-        <ellipse cx="168" cy="220" rx="49" ry="21" transform="rotate(25 168 260)"/>
+        <ellipse cx="168" cy="260" rx="49" ry="21" transform="rotate(25 168 260)"/>
         <ellipse cx="119" cy="174" rx="45" ry="20" transform="rotate(57 119 174)"/>
       </g>
       <g fill="#cbd3ca">
@@ -190,45 +178,9 @@ function setActiveSuggestion(next){
   items[activeSuggestion].scrollIntoView({block:"nearest"});
 }
 function showGuest(g){
-  resultBox.innerHTML=`<div class="result-card"><div class="result-label">il tuo tavolo è</div><div class="table-name">${escapeHtml(g.table)}</div><div class="result-message">Ti aspettiamo a tavola!</div></div>
-<div class="seating-map" aria-label="Piantina dei tavoli">
-  <p class="seating-map-title">Dove trovarlo</p>
-  <div class="seating-map-frame">
-    <svg viewBox="0 0 700 860" role="img" aria-label="Piantina della sala">
-      <line class="map-divider" x1="350" y1="0" x2="350" y2="120"/>
-      <line class="map-divider" x1="350" y1="220" x2="350" y2="410"/>
-      <line class="map-divider" x1="350" y1="585" x2="350" y2="860"/>
-      <line class="map-divider" x1="555" y1="340" x2="700" y2="340"/>
-
-      <g data-table="DURELLO"><circle class="map-table" cx="105" cy="80" r="60"/><text class="map-table-label" x="105" y="80">DURELLO</text></g>
-      <g data-table="RIPASSO"><circle class="map-table" cx="250" cy="155" r="60"/><text class="map-table-label" x="250" y="155">RIPASSO</text></g>
-      <g data-table="PROSECCO"><circle class="map-table" cx="95" cy="245" r="60"/><text class="map-table-label" x="95" y="245">PROSECCO</text></g>
-      <g data-table="PASSERINA"><circle class="map-table" cx="252" cy="335" r="60"/><text class="map-table-label" x="252" y="335">PASSERINA</text></g>
-      <g data-table="CUSTOZA"><circle class="map-table" cx="95" cy="430" r="60"/><text class="map-table-label" x="95" y="430">CUSTOZA</text></g>
-      <g data-table="LUGANA"><circle class="map-table" cx="250" cy="560" r="60"/><text class="map-table-label" x="250" y="560">LUGANA</text></g>
-      <g data-table="RECIOTO"><circle class="map-table" cx="95" cy="675" r="60"/><text class="map-table-label" x="95" y="675">RECIOTO</text></g>
-      <g data-table="AMARONE"><circle class="map-table" cx="250" cy="745" r="60"/><text class="map-table-label" x="250" y="745">AMARONE</text></g>
-      <g data-table="BOSS MARAI"><circle class="map-table" cx="95" cy="815" r="60"/><text class="map-table-label" x="95" y="815">BOSS MARAI</text></g>
-
-      <g><circle class="map-table" cx="600" cy="120" r="60"/><text class="map-table-label" x="600" y="120">BAMBINI</text></g>
-      <g><circle class="map-table" cx="500" cy="255" r="60"/><text class="map-table-label" x="500" y="255">BAMBINI</text></g>
-      <g><circle class="map-table" cx="500" cy="560" r="60"/><text class="map-table-label" x="500" y="550">DJ</text><text class="map-table-label" x="500" y="573" style="font-size:14px">FOTOGRAFI</text></g>
-    </svg>
-  </div>
-</div>
-<div class="good-party">Buona festa!</div>`;
-  highlightMapTable(g.table);
+  resultBox.innerHTML=`<div class="result-card"><div class="result-label">il tuo tavolo è</div><div class="table-name">${escapeHtml(g.table)}</div><div class="result-message">Ti aspettiamo a tavola!</div></div><div class="good-party">Buona festa!</div>`;
   resultBox.classList.add("show"); resultBox.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
-
-function highlightMapTable(tableName){
-  const target=normalizeText(tableName);
-  resultBox.querySelectorAll(".seating-map [data-table]").forEach(group=>{
-    const circle=group.querySelector(".map-table");
-    if(circle) circle.classList.toggle("active",normalizeText(group.dataset.table)===target);
-  });
-}
-
 function submitSearch(){
   const q=normalizeText(input.value); if(!q)return;
   const exact=indexed.filter(g=>g.normalized===q);
